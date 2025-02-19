@@ -1,5 +1,67 @@
-/test/
-test.py
-*.db
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.dylib
+*.egg
+*.egg-info
+dist/
+build/
+eggs/
+
+# Django
+*.log
 *.sqlite3
 db.sqlite3
+media/
+static/
+
+# VSCode
+.vscode/
+
+# IDEs
+.idea/
+
+# Python virtual environments
+venv/
+env/
+.venv/
+.virtualenv/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Local development environments
+local_settings.py
+
+# Test coverage reports
+.coverage
+*.coveragerc
+
+# Python wheels
+*.whl
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# pytest
+.cache/
+
+
+/test/
+test.py

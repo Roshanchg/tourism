@@ -1,6 +1,4 @@
-﻿######################################
-    Website Code For PSE Project 
-######################################
+# Website Code For PSE Project #
 
 1. Run These commands Before.
     (REQUIRED TO cd to 'tourism' directory or this repo's directory)

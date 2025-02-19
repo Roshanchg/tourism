@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'mainapp/loginpage.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
+        <script src="{% static 'mainapp/loginpage.js' %}"></script>
+        <script src="{% static 'mainapp/hashit.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>        
+        <div class="form-container" id="login-form-div">
+            <p id="eco-yatra">ECO<br> YATRA</p>
+            <div id="divider"></div>
+            <div class="form-logo-div" onclick="window.location.href='{% url 'mainapp:index' %}';">
+                <img src="{% static 'mainapp/images/Logo.png' %}" class="form-logo">
+            </div>
+            <label id="login-title">Log In</label>
+            <form method="POST" action="{% url 'mainapp:login' %}" id='login-form'>
+                {% csrf_token %}
+                <input type="text" placeholder="Email address" name="email" class="input-box" id="username" required><br>
+                <input type="password" placeholder="Password" name="password" class="input-box" id="password" required>
+                <div class="showpass" id="showpassLogin" onclick="shuffleLoginPassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                    <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
+                    </svg>
+                </div><br>
+                <input type="checkbox" name="remember-me" id="remember-me-inp" value="remember">
+                <label for="remember-me" id="remember-label">Remember me</label>
+                <a  href="#" id="forgot-password">Forgot Password?</a><br>
+                <button type="submit" id="login-button">Login</button><br>
+                <p id="no-account">Don't have an account? <a onclick="showSignup()" id="create-account">Create account</a></p>
+            </form>
+        </div>
+        <div class='login-req' id="login-div-login" ><a>Log In</a></div>
+        <div class='login-req' id="login-div-signup" onclick="showSignup()"><a>Sign Up</a></div>
+
+        <div class="form-container" id="register-form-div">
+            <p id="eco-yatra">ECO<br> YATRA</p>
+            <div id="divider"></div>
+            <div class="form-logo-div" onclick="window.location.href='{% url 'mainapp:index' %}';">
+                <img src="{% static 'mainapp/images/Logo.png' %}" class="form-logo">
+            </div>
+            <label id="signup-title">Create an account</label>
+            <form method="POST" action="{% url 'mainapp:register' %}" id="register-form">
+                {% csrf_token %}
+                <input type="text" placeholder="Full Name" name="fullname" class="input-box-reg" id="fullname" required><br>
+                <input type="text" placeholder="Email address" name="email" class="input-box-reg" id="reg-username" required><br>
+                <input type="password" placeholder="Password" name="password" class="input-box-reg" id="reg-password" required>
+                <div class="showpass" id="showpassReg" onclick="shuffleRegPassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                    <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
+                    </svg>
+                </div><br>
+                <button type="submit" id="create-button">Create Account</button><br>
+                <p id="yes-account">Already have an account? <a onclick="showLogin()" id="create-account">Log In</a></p>
+            </form>
+        </div>
+        <div class='signup-req' id="signup-div-signup" ><a>Sign Up</a></div>
+        <div class='signup-req' id="signup-div-login" onclick="showLogin()"><a>Log In</a></div>
+
+
+
+        {% if alert_message %}
+        <script type='text/javascript'>
+            alert("{{ alert_message }}");
+        </script>
+        {% endif %}
+    </body>
+</html>

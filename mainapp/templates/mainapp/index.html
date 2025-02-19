@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Company Name</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'mainapp/index.css' %}">
+    </head>
+    <body>  
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const featuredOptions = document.getElementById("featured-options");
+        
+                // Mouse swipe functionality
+                let isMouseDown = false;
+                let startX;
+                let scrollLeft;
+        
+                featuredOptions.addEventListener('mousedown', (e) => {
+                    isMouseDown = true;
+                    startX = e.pageX - featuredOptions.offsetLeft;
+                    scrollLeft = featuredOptions.scrollLeft;
+                });
+        
+                featuredOptions.addEventListener('mouseleave', () => {
+                    isMouseDown = false;
+                });
+        
+                featuredOptions.addEventListener('mouseup', () => {
+                    isMouseDown = false;
+                });
+        
+                featuredOptions.addEventListener('mousemove', (e) => {
+                    if (!isMouseDown) return; // Only run when mouse is down
+                    e.preventDefault();
+                    const x = e.pageX - featuredOptions.offsetLeft;
+                    const scroll = (x - startX) * 3; // Adjust multiplier to control scrolling speed
+                    featuredOptions.scrollLeft = scrollLeft - scroll;
+                });
+        
+                // Touch swipe functionality
+                let isTouching = false;
+                let touchStartX;
+                let touchScrollLeft;
+        
+                featuredOptions.addEventListener('touchstart', (e) => {
+                    isTouching = true;
+                    touchStartX = e.touches[0].pageX - featuredOptions.offsetLeft;
+                    touchScrollLeft = featuredOptions.scrollLeft;
+                });
+        
+                featuredOptions.addEventListener('touchend', () => {
+                    isTouching = false;
+                });
+        
+                featuredOptions.addEventListener('touchmove', (e) => {
+                    if (!isTouching) return; // Only run when touch is active
+                    e.preventDefault();
+                    const x = e.touches[0].pageX - featuredOptions.offsetLeft;
+                    const scroll = (x - touchStartX) * 2; // Adjust multiplier to control scrolling speed
+                    featuredOptions.scrollLeft = touchScrollLeft - scroll;
+                });
+            });
+        </script>  
+        <div id="nav-bar">
+            <div id="left-div">
+                <div id="main-logo-div">
+                    <a href="#main-page">
+                        <img src="{% static 'mainapp/images/logo-white.png' %}" id="main-logo">
+                        <span id="main-span" >Eco<br>Yatra</span>
+                    </a>
+                </div>
+                <div id="discover">
+                    <a href="#discover-page">
+                        <span id="discover-span" class="underline-span">Discover</span>
+                    </a>
+                </div>
+                <div id="about">
+                    <a href="#about-page">
+                        <span id="about-span" class="underline-span">About Us</span>
+
+                    </a>
+                </div>
+                <div id="blog">
+                    <a href="#blog-page">
+                        <span id="blog-span" class="underline-span">Blog</span>
+
+                    </a>
+                </div>
+                <div id="contact">
+                    <a href="#contact-page">
+                        <span id="contact-span" class="underline-span">Contact Us</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="right-div">
+                <div id="languages">
+                    <select id="language-selector">
+                        <option value="English">English</option>
+                        <option value="Nepali">Nepali</option>
+                        <option value="German">German</option>
+                    </select>
+                </div>
+                <div id="account">
+                    {% if logged_user %}
+                    <a href="#ACCOUNT">
+                        <span id="account-name" class="underline-span">{{ logged_user }}</span>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'mainapp:login' %}">
+                        <span id="discover-span" class="underline-span">Login</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <section id="main-page">
+            <div id="back-img">
+                <p>Your Journey Starts Here</p>
+            </div>
+            <div id="search-bar-div">
+                <svg id="search-icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 -960 960 960">
+                    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+                </svg>
+                <input id="search-input" placeholder="Search for a destination here">
+                <button type="submit">Search</button>
+            </div>
+            <div id="featured-div">
+                <p id="feature-span">Featured</p>
+                <div id="featured-options">
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/mustang1.jpg' %}" alt="Mustang">
+                        <div class="overlay">
+                            <p class="overlay-text">Mustang</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/annapurna base camp.jpg' %}" alt="annapurna">
+                        <div class="overlay">
+                            <p class="overlay-text">Annapurna</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/fewa lake.jpg' %}" alt="Mustang">
+                        <div class="overlay">
+                            <p class="overlay-text">Fewa Lake</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/ghandruk village.jpg' %}" alt="Mustang">
+                        <div class="overlay">
+                            <p class="overlay-text">Ghandruk Village</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/kuri village.jpg' %}" alt="Mustang">
+                        <div class="overlay">
+                            <p class="overlay-text">Kuri Village</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'mainapp/images/Kanchenjunga base camp.jpg' %}" alt="Mustang">
+                        <div class="overlay">
+                            <p class="overlay-text">KanchanJunga</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="discover-page">
+            discover
+        </section>
+        <section id="about-page">
+            about
+        </section>
+        <section id="blog-page">
+            blog
+        </section>
+        <section id="contact-page">
+            contact
+        </section>
+
+        
+    </body>
+</html>

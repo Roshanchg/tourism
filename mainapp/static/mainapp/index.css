@@ -1,0 +1,269 @@
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+html{
+    scrollbar-width: none;
+}
+body {
+    -ms-overflow-style: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+/* Style the navigation bar */
+#nav-bar {
+    overflow: hidden;
+    height: 80px; /* Set height */
+    width: 100%;
+    background-color: transparent; /* Dark background */
+    display: flex;
+    justify-content: space-between; /* Space between left and right divs */
+    align-items: center; /* Vertically center contents */
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure navbar stays on top */
+
+}
+
+
+#left-div div,#right-div div{
+    overflow: hidden;
+} 
+
+/* Style the left and right divs */
+#left-div, #right-div {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Ensure items inside are centered */
+    gap: 20px;
+}
+
+/* Logo styling */
+#main-logo-div a {
+    display: flex;
+    align-items: center; /* Center image and text */
+    text-decoration: none;
+}
+
+#main-logo {
+    height: 60px; /* Adjust logo size */
+}
+
+#main-span {
+    margin-left: 10px;
+}
+
+/* Navbar links */
+#left-div div a {
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+#account a {
+    align-items: center;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.underline-span, #main-span {
+    display: inline-block;
+}
+
+.underline-span, #main-span {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.underline-span:hover{
+    color: #f1f1f1;
+}
+
+.underline-span::after {
+    content: '';
+    position: absolute;
+    bottom:0px; /* Adjust distance from text */
+    left: 0;
+    width: 0%; /* Set initial width of the underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #23a7ff; /* Underline color */
+    border-radius: 2px; /* Rounded corners */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.underline-span:hover::after {
+    width: 100%; /* Expand underline to full width on hover */
+}
+/* Styling for language selector without underline effect */
+#language-selector {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+/* No underline or appearance for select options */
+#language-selector>option {
+    border: none;
+    outline: none;
+    appearance: none;
+}
+
+
+#main-page{
+    height: 100vh;
+    width: 100vw;
+    
+}
+#back-img{
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+    background-image: url("images/mteverest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#back-img>p{
+    position: absolute;
+    display: inline-block;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    top: 50%;
+    left: 32%;
+}
+
+#search-bar-div{
+    background-color: white;
+    position:relative;
+    top: 45%;
+    left: 25vw;
+    width: 50vw;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    box-shadow: 2px 5px 5px rgb(170, 170, 170);
+}
+#search-icon{
+    height: 60%;
+    padding-left: 15px;
+    fill: #585858;
+}
+#search-input{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    width: 50%;
+    flex-grow: 1;
+    padding-left: 10px;
+    font-size: 20px;
+}
+#search-input:focus{
+    outline: none;
+}
+
+#search-bar-div>button{
+    border: 0px;
+    background-color: #242f45;
+    margin-right: 14px;
+    height: 76%;
+    width: 15%;
+    font-size: 16px;
+    border-radius: 40px;
+    box-shadow: 2px 2px 4px #1e2739;
+    color: white;
+    cursor: pointer;
+}
+
+#search-bar-div>button:active{
+    box-shadow: 0px 0px 0px white;
+}
+#featured-div{
+    overflow-y: hidden;
+    position: relative;
+    top: 45%;
+    height: 45%;
+    overflow-y: hidden;
+}
+#feature-span{
+    font-size: 36px;
+    position: relative;
+    left: 3%;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #202020cc;
+}
+#featured-options{
+    overflow-y: hidden;
+    width: 96%;
+    display: flex;
+    overflow-x:auto;
+    scroll-behavior: smooth;
+    flex-direction: row;
+    height: 60%;
+    gap: 20px;
+    position: relative;
+    top: 30px;
+    left: 3%;
+}
+.image-container {
+    position: relative;
+    width: 300px; /* You can adjust this to fit your design */
+    height: 200px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease; /* Smooth blur transition */
+}
+
+.image-container:hover img {
+    filter: blur(5px); /* Add a blur effect on hover */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth transition for showing overlay */
+}
+
+.overlay-text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.image-container:hover .overlay {
+    opacity: 1; /* Show the overlay on hover */
+}
+.image-container{
+    min-width: 300px;
+}

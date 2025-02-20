@@ -16,7 +16,6 @@ eggs/
 *.sqlite3
 db.sqlite3
 media/
-static/
 
 # VSCode
 .vscode/

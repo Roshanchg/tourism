@@ -108,7 +108,7 @@
                 </div>
                 <div id="account">
                     {% if logged_user %}
-                    <a href="#ACCOUNT">
+                    <a href="{% url 'mainapp:myaccount' % }">
                         <span id="account-name" class="underline-span">{{ logged_user }}</span>
                     </a>
                     {% else %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpRequest
+from django.contrib.auth.decorators import login_required
 from mainapp.models import Users
 def loginForm(request):
     if request.method=='POST':
@@ -66,3 +67,16 @@ def user_exists(email):
 
 def mainPage(request):
     return render(request=request,template_name='mainapp/index.html')
+
+def myaccount(request,email):
+    if(user_exists(email=email)):
+            name=get_name(email=email)
+            userarr=name.split(" ")
+            temp=""
+            for i in userarr:
+                temp+=i[0]
+            return render(request=request,template_name='mainapp/accounts.html',context={'name':name,
+                                                                                         'nameshort':temp,
+                                                                                         'email':email,
+                                                                                         'looping':[1,2,3,4,5]})
+    return render(request=request,template_name="mainapp/loginpage.html")

@@ -1,0 +1,276 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+html{
+    scrollbar-width: none;
+}
+body {
+    -ms-overflow-style: none;
+    background: url("images/mteverest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Arial';
+}
+/* Style the navigation bar */
+#nav-bar {
+    overflow: hidden;
+    height: 10%; /* Set height */
+    width: 100%;
+    background-color: #8e8e8e0b; /* Dark background */
+    display: flex;
+    justify-content: space-between; /* Space between left and right divs */
+    align-items: center; /* Vertically center contents */
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure navbar stays on top */
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.685);
+}
+
+
+#left-div div,#right-div div{
+    overflow: hidden;
+} 
+
+/* Style the left and right divs */
+#left-div, #right-div {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Ensure items inside are centered */
+    gap: 20px;
+}
+
+/* Logo styling */
+#main-logo-div a {
+    display: flex;
+    align-items: center; /* Center image and text */
+    text-decoration: none;
+}
+
+#main-logo {
+    height: 60px; /* Adjust logo size */
+}
+
+#main-span {
+    margin-left: 10px;
+}
+
+/* Navbar links */
+#left-div div a {
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+#account a {
+    align-items: center;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.underline-span, #main-span {
+    display: inline-block;
+}
+
+.underline-span, #main-span {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.underline-span:hover{
+    color: #f1f1f1;
+}
+
+.underline-span::after {
+    content: '';
+    position: absolute;
+    bottom:0px; /* Adjust distance from text */
+    left: 0;
+    width: 0%; /* Set initial width of the underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #23a7ff; /* Underline color */
+    border-radius: 2px; /* Rounded corners */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.underline-span:hover::after {
+    width: 100%; /* Expand underline to full width on hover */
+}
+/* Styling for language selector without underline effect */
+#language-selector {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+/* No underline or appearance for select options */
+#language-selector>option {
+    border: none;
+    outline: none;
+    appearance: none;
+}
+
+.account-divs{
+    background-color: #151515fa;
+    border-radius: 20px;
+}
+#user-details{
+    position: absolute;
+    width: 40%;
+    height: 77.5%;
+    left: 1.5%;
+    top: 16%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6%;
+    padding: 2%;
+}
+.more-details{
+    right: 1.5%;
+    position: absolute;
+    width: 55%;
+    top: 14%;
+    height: 82%;
+    color:white;
+    padding: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+#user-icon{
+    border-radius: 80px;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4B4C88;
+}
+
+#user-icon>span{
+    color: WHITE;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#user-icon-label{
+    height: 18%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10%;
+}
+
+#user-label{
+    color: white;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.account-options{
+    width: 70%;
+    height: 9%;
+    border-radius: 14px;
+    color: white;
+    border: 0px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#user-email-div{
+    display: flex;
+    align-items: center;
+    color:white;
+    height: 9%;
+    font-size: 20px;
+}
+
+#archive-button{
+    background-color: #458AD0;
+    box-shadow: 2px 2px 3px #101010;
+}
+
+#archive-button:hover{
+    background-color: #3c7bba;
+}
+
+#archive-button:active,#reset-email:active,#reset-password:active,#suicide:active{
+    box-shadow: none;
+}
+#reset-email,#reset-password{
+    background-color: #425B3A;
+    box-shadow: 2px 2px 3px #101010;
+}
+#reset-email:hover,#reset-password:hover{
+    background-color: #34472d;
+}
+#suicide{
+    background-color: #8B0A0A;
+    box-shadow: 2px 2px 3px #101010;
+}
+#suicide:hover{
+    background-color: #660707;
+
+}
+
+
+#archive-contents{
+    position: absolute;
+    top: 13%;
+    height: 80%;
+    width: 90%;
+}
+.archive-content{
+    height: 47%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 14px;
+    border: 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.79);
+    margin-bottom: 10px;
+}
+.archive-content>img{
+    width: 50%;
+    min-width: 48%;
+    border-radius: 14px;
+    border: 0;
+    box-shadow: 2px 0px 3px rgb(41, 41, 41);
+}
+.content-desc{
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    overflow-y: auto;
+    padding: 2%;
+    background-color: transparent;
+    color: black;
+    font-size: 12px;
+}
+.destination-title{
+    width: 100%;
+    height: 25%;
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}

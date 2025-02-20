@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Manage Account</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'mainapp/accounts.css' %}">
+    </head>
+    <body>
+        <div id="nav-bar">
+            <div id="left-div">
+                <div id="main-logo-div">
+                    <a href="#main-page">
+                        <img src="{% static 'mainapp/images/logo-white.png' %}" id="main-logo">
+                        <span id="main-span" >Eco<br>Yatra</span>
+                    </a>
+                </div>
+                <div id="discover">
+                    <a href="#discover-page">
+                        <span id="discover-span" class="underline-span">Discover</span>
+                    </a>
+                </div>
+                <div id="about">
+                    <a href="#about-page">
+                        <span id="about-span" class="underline-span">About Us</span>
+
+                    </a>
+                </div>
+                <div id="blog">
+                    <a href="#blog-page">
+                        <span id="blog-span" class="underline-span">Blog</span>
+
+                    </a>
+                </div>
+                <div id="contact">
+                    <a href="#contact-page">
+                        <span id="contact-span" class="underline-span">Contact Us</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="right-div">
+                <div id="languages">
+                    <select id="language-selector">
+                        <option value="English">English</option>
+                        <option value="Nepali">Nepali</option>
+                        <option value="German">German</option>
+                    </select>
+                </div>
+                <div id="account">
+                    {% if nameshort %}
+                    <a href="#ACCOUNT">
+                        <span id="account-name" class="underline-span">{{ nameshort }}</span>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'mainapp:login' %}">
+                        <span id="discover-span" class="underline-span">Login</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="user-details" class="account-divs">
+            <div id="user-icon-label">
+                <div id="user-icon">
+                    <span id="user-short">
+                        RC
+                    </span>
+                </div>
+                <span id="user-label">Roshan Chaulagain</span>
+            </div>
+            <div id="user-email-div">Email:&nbsp&nbsp 
+                <span id="user-email">chgroshan6@gmail.com</span>
+            </div>
+            <button class="account-options" id="archive-button">Archived</button>
+            <button class="account-options" id="reset-email">Change E-mail</button>
+            <button class="account-options" id="reset-password">Change Password</button>
+            <button class="account-options" id="suicide">Delete My Account</button>
+
+        </div>
+        <div id="archive-container" class="account-divs more-details">
+            <span class="more-title">Your Archive</span>
+            <div id="archive-contents">
+                {% for i in looping %}
+                <div class="archive-content">
+                    <img src="{% static 'mainapp/images/Kanchenjunga base camp.jpg' %}">
+                    <div class="content-desc">
+                        <span class="destination-title">Title</span>
+                        <p class="destination-desc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat ex, suscipit eu felis consequat, aliquam fermentum justo. Suspendisse risus augue, accumsan in lorem sed, blandit dictum arcu. Proin feugiat orci nisl. Vestibulum ac lacus iaculis, viverra velit id, mollis quam. In semper lorem at mauris tempor, sit amet mattis turpis pellentesque. Phasellus ultricies arcu rhoncus, ullamcorper neque vitae, pellentesque ex. Fusce ligula purus, consectetur ut scelerisque quis, dapibus quis metus. Duis consequat eu leo non hendrerit. Maecenas eget pharetra quam, sit amet imperdiet enim.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat ex, suscipit eu felis consequat, aliquam fermentum justo. Suspendisse risus augue, accumsan in lorem sed, blandit dictum arcu. Proin feugiat orci nisl. Vestibulum ac lacus iaculis, viverra velit id, mollis quam. In semper lorem at mauris tempor, sit amet mattis turpis pellentesque. Phasellus ultricies arcu rhoncus, ullamcorper neque vitae, pellentesque ex. Fusce ligula purus, consectetur ut scelerisque quis, dapibus quis metus. Duis consequat eu leo non hendrerit. Maecenas eget pharetra quam, sit amet imperdiet enim.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
